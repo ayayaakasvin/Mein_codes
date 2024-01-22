@@ -1,0 +1,2 @@
+﻿Test.obj : error LNK2005: main уже определен в string_correction.obj
+C:\Users\kozha\OneDrive\Рабочий стол\KBTU PP\Test\x64\Debug\Test.exe : fatal error LNK1169: обнаружен многократно определенный символ - один или более
