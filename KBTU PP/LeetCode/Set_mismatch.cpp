@@ -1,24 +1,33 @@
 #include <vector>
 #include <iostream>
-#include <numeric>
+#include <unordered_map>
 
 class Solution {
 public:
     std::vector<int> findErrorNums(std::vector<int>& nums) {
-        for (int i = 0; i < nums.size() - 1; i++)
+        std::unordered_map <int, size_t> integer_count;
+        int target_dupl, not_mentioned_number;
+
+        for (int i : nums)
         {
-            if (nums[i] == nums[i + 1])
-            {
-                if (i == 0  && nums[i] != 1)
-                {
-                    return {nums[i], nums[i] - 1};
-                }
-                else
-                {
-                    return {nums[i], nums[i] + 1};
-                }
-            }
+            integer_count[i]++;
         }
-        return {};
+
+        for (int i = 1; i <= nums.size(); i++)
+        {
+            if (integer_count[i] == 0)
+            {
+                not_mentioned_number = i;
+            }
+            
+            if (integer_count[i] == 2)
+            {
+                target_dupl = i;
+            }
+            
+        }
+        
+        
+        return {target_dupl, not_mentioned_number};
     }
 };
